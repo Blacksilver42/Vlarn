@@ -1,6 +1,6 @@
 # Vlarn
 
-
+It's Ularn for 2017. Submit issues at github.com/Blacksilver42/Vlarn
 
 ### Original Ularn README:
 
