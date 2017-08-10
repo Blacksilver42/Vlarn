@@ -10,9 +10,6 @@ void copymagics(){
 	int i=0,n=0;
 	for(i=0;i<MAXPOTION;i++){
 		n=strlen(&potiondata[i][1])+2;
-		if(n==3) { // Not used
-			continue;
-		} 
 		potionname[i]=malloc(n);
 		potionname[i][0]=0;
 		strncpy(&potionname[i][1],&potiondata[i][1],n);
@@ -20,9 +17,6 @@ void copymagics(){
 	printf("\n");
 	for(i=0;i<MAXSCROLL;i++){
 		n=strlen(&scrolldata[i][1])+2;
-		if(n==3) { // Not used
-			continue;
-		} 
 		potionname[i]=malloc(n);
 		scrollname[i]=malloc(n);
 		scrollname[i][0]=0;
