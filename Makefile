@@ -27,8 +27,8 @@ LIBFILES=	Uhelp Umaps Ufortune
 
 all:	Ularn
 
-Ularn: $(OBJS)
-	$(CC) -g -o $@ $(OBJS1)  $(SYS_LIBRARIES) $(LDFLAGS)
+Ularn: $(OBJ)
+	$(CC) -g -o $@ $(OBJ)  $(SYS_LIBRARIES) $(LDFLAGS)
 
 .c.o:	
 	$(CC) -g -c $(CFLAGS) $<
