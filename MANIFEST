@@ -1,0 +1,46 @@
+After all the Ularn kits are run you should have the following files:
+
+Filename		Kit Description
+--------		--- -----------
+Configure                2 
+Imakefile.SH            10 
+MANIFEST                10 this shipping list
+Makefile.u.SH              
+README                   1 
+Ufortune                10 data file
+Uhelp                    9 data file
+Ularnopts                2 sample options file
+Umaps                    7 data file
+action.c                 9 
+bill.c                   9 
+config.h.SH              8 Produces config.h.
+create.c                 4 
+data.c                   4 
+diag.c                   9 
+display.c                5 
+extern.h                 3 data and function decl's
+fortune.c               10 
+header.h                10 
+help.c                  10 
+io.c                     8 
+itm.h                   10 
+main.c                   5 
+monst.h                 10 
+monster.c                1 
+moreobj.c                9 
+movem.c                  8 
+nap.c                   10 
+object.c                 3 
+patchlevel.h               
+player.c                 6 
+player.h                 5 
+regen.c                  9 
+savelev.c                8 
+scores.c                 7 
+show.c                  10 
+signal.c                 7 
+sphere.c                 9 
+sphere.h                 1 
+store.c                  6 
+tok.c                    2 
+tty.c                   10 
