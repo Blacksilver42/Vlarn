@@ -1,61 +1,33 @@
-##########################################################################
 #  	the location of data files
 LIBDIR	= 	/usr/games/lib/Ularn
-##########################################################################
 
-##########################################################################
 #	final location of binary (for 'make install')
 BINDIR = 	/usr/games
-##########################################################################
 
-##########################################################################
-#  	name of program
-PROGRAM	= 	Ularn
-##########################################################################
-
-##########################################################################
-# 	for termcap functions
-SYS_LIBRARIES=	
-##########################################################################
-
-##########################################################################
 #	link flags
 LDFLAGS= -lncurses -ltermcap
-##########################################################################
 
-##########################################################################
-#	compile flags
-CFLAGS= 
-##########################################################################
-##########################################################################
 #	the source files
-SRCS1	= action.c bill.c create.c data.c diag.c display.c fortune.c\
+SRC	= action.c bill.c create.c data.c diag.c display.c fortune.c\
 	player.c help.c io.c main.c monster.c moreobj.c movem.c object.c\
 	regen.c savelev.c scores.c show.c signal.c sphere.c store.c tok.c \
 	nap.c tty.c
-##########################################################################
 
-##########################################################################
 #	the object files
-OBJS1	= action.o bill.o create.o data.o diag.o display.o fortune.o\
+OBJ	= action.o bill.o create.o data.o diag.o display.o fortune.o\
 	player.o help.o io.o main.o monster.o moreobj.o movem.o object.o\
 	regen.o savelev.o scores.o show.o signal.o sphere.o store.o tok.o \
 	nap.o tty.o
-##########################################################################
 
-##########################################################################
 #	header files
 HDRS	= header.h itm.h monst.h sphere.h config.h player.h
-##########################################################################
 
-##########################################################################
 #	data files
 LIBFILES=	Uhelp Umaps Ufortune
-##########################################################################
 
-all:	$(PROGRAM)
+all:	Ularn
 
-$(PROGRAM): $(OBJS1)
+Ularn: $(OBJS)
 	$(CC) -g -o $@ $(OBJS1)  $(SYS_LIBRARIES) $(LDFLAGS)
 
 .c.o:	
@@ -73,6 +45,12 @@ install: $(PROGRAM) $(LIBFILES)
 
 install.man: $(PROGRAM).man
 	-cp $(PROGRAM).man $(MANDIR)/$(PROGRAM).1
+
+
+
+# This came with the auto-generated Makefile,
+# and I confess to having no idea what it does.
+# -- Blacksilver
 
 lint:
 	lint $(SRCS1) $(LINTLIBS)
@@ -120,6 +98,10 @@ shar: $(ALLSHAR)
 
 tar: $(ALLSHAR)
 	tar cvf Ularn.tar $(ALLSHAR)
+
+
+##### Okay, I know what this does:
+# -B
 
 
 # DO NOT DELETE
