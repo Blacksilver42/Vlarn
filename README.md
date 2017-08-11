@@ -2,6 +2,10 @@
 
 It's Ularn for 2017. Submit issues at http://github.com/Blacksilver42/Vlarn
 
+It ought to work on any standard ubuntu 14.04 LTS system; untested...
+
+Want to become a tester? Find and submit a bug, you'll be added to the list.
+
 **Ularn by Phil Cordier.  
 Larn by Noah Morgan.**
 
