@@ -19,13 +19,13 @@ void do_create(void);
 
 /* module: bill.c */
 
-int letter1(void);
-int letter2(void);
-int letter3(void);
-int letter4(void);
-int letter5(void);
-int letter6(void);
-int mailbill(void);
+int  letter1(void);
+int  letter2(void);
+int  letter3(void);
+int  letter4(void);
+int  letter5(void);
+int  letter6(void);
+void mailbill(void);
 
 /* module: config.c */
 
