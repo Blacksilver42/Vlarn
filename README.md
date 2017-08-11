@@ -11,7 +11,7 @@ It's Ularn for 2017. Submit issues at http://github.com/Blacksilver42/Vlarn
 * Stock Ubuntu
 * Cygwin
 
-Want to become a tester? Find and submit a bug or check compatibilit with a new system; you'll be added to the list.
+Want to become a tester? Find and submit a bug or check compatibility with an untested system; you'll be added to the list.
 
 **Ularn by Phil Cordier.  
 Larn by Noah Morgan.**
