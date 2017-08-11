@@ -9,9 +9,9 @@ static char **flines=NULL;	/* array of pointers to each fortune */
 static int fortune_fd=0;	/* true if we have loaded the fortune info */
 static int nlines=0;	/* # lines in fortune database */
 
-char *fortune(file)
-char *file;
-{
+char * nofile = "Fortune file error! Make sure Ufortune is in /usr/lib/games/Ularn.";
+
+char *fortune(char *file){
 	char *p;
 	int lines,tmp;
 	struct stat stat;
@@ -20,7 +20,7 @@ char *file;
 	if (fortune_fd==0) {
 		/* open the file */
 		if ((fortune_fd=open(file,O_RDONLY)) < 0)	
-			return(0); /* can't find file */
+			return(nofile); /* can't find file */
 
 		/* find out how big fortune file is and get memory for it */
 		retval = fstat(fortune_fd,&stat);
@@ -62,8 +62,7 @@ char *file;
 		/* now assign each pointer to a line */
 		for (p=base,tmp=0; tmp<nlines; tmp++) {
 			flines[tmp]=p;  
-			while (*p++)
-				; /* advance to next line */
+			while (*p++); /* advance to next line */
 		}
 	}
 
