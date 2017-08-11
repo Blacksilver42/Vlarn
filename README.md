@@ -2,8 +2,6 @@
 
 It's Ularn for 2017. Submit issues at http://github.com/Blacksilver42/Vlarn
 
-It ought to work on any standard ubuntu 14.04 LTS system; untested...
-
 **Garunteed to work on:**
 
 * Chromebook-with-linux-hacked-in
@@ -13,7 +11,7 @@ It ought to work on any standard ubuntu 14.04 LTS system; untested...
 * Stock Ubuntu
 * Cygwin
 
-Want to become a tester? Find and submit a bug, you'll be added to the list.
+Want to become a tester? Find and submit a bug or check compatibilit with a new system; you'll be added to the list.
 
 **Ularn by Phil Cordier.  
 Larn by Noah Morgan.**
