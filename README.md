@@ -1,7 +1,9 @@
 # Vlarn
 
-It's Ularn for 2017. Submit issues at github.com/Blacksilver42/Vlarn
+It's Ularn for 2017. Submit issues at http://github.com/Blacksilver42/Vlarn
 
+**Ularn by Phil Cordier.  
+Larn by Noah Morgan.**
 
 ### Original Ularn README:
 
