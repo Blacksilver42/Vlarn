@@ -7,15 +7,15 @@ void run(int dir);
 void wield(void);
 void ydhi(char);
 void ycwi(char);
-int wear(void);
+void wear(void);
 void dropobj(void);
-int readscr(void);
-int eatcookie(void);
-int quaff(void);
-int qwhatitem(void);
-int whatitem(char *);
-long readnum(long);
-int do_create(void);
+void readscr(void);
+void eatcookie(void);
+void quaff(void);
+int  qwhatitem(void);
+int  whatitem(char *);
+int  readnum(int);
+void do_create(void);
 
 /* module: bill.c */
 
@@ -369,7 +369,8 @@ extern char *levelname[],loginname[],logname[],*lpbuf,*lpend;
 /* extern char *lpnt, *password, mitem[MAXX][MAXY], moved[MAXX][MAXY];  */
 extern char *lpnt, *password, moved[MAXX][MAXY]; 
 extern char *objectname[], *spelname[],*spelmes[],char_class[], iven[];
-extern char nosignal, nobeep,oldx,oldy,playerx,playery, dropflag;
+extern char nosignal, nobeep, oldx, oldy, dropflag;
+extern int playerx, playery;
 extern char restorflag,nomove, srcount, char_picked;
 extern char nowelcome, level, cheat, enable_scroll;
 extern char nch[], ndgg[], ckpflag, monstlevel[];
