@@ -11,8 +11,7 @@
  *	subroutine to create the player and the players attributes
  *	this is called at the beginning of a game and at no other time
  */
-makeplayer ()
-{
+void makeplayer() {
 	int i;
 
 	scbr();
@@ -49,9 +48,7 @@ makeplayer ()
  *	levels will get a few more monsters.
  *	Note that it is here we remove genocided monsters from the present level
  */
-newcavelevel (x)
-int x;
-{
+void newcavelevel(int x) {
 	int i,j;
 
 	if (beenhere[level])
