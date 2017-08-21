@@ -32,8 +32,8 @@ void mailbill(void);
 
 /* module: create.c */
 
-int makeplayer(void);
-int newcavelevel(int);
+void makeplayer(void);
+void newcavelevel(int);
 int makemaze(int);
 int eat(int, int);
 int cannedlevel(int);
