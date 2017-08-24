@@ -1,2 +1,8 @@
+#Compiled binary
 Ularn
+
+#Object files
 *.o
+
+#Vim temporary files
+*.swp
