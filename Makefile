@@ -56,7 +56,7 @@ lint:
 	lint $(SRCS1) $(LINTLIBS)
 
 clean:
-	$(RM) -f Ularn $(OBJ) core
+	rm -f Ularn $(OBJ) core
 
 tags:	nulldep
 
