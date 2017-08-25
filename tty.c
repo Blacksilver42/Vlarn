@@ -55,7 +55,7 @@ static struct termstruct inittyb, curttyb;
 /*
  *	set current tty
  */
-setctty()
+void setctty()
 {
 	if (STTY(&curttyb) == -1 )
 		perror("setctty");
@@ -68,7 +68,7 @@ setctty()
  * and switch off tab expansion if necessary.
  * Called by startup() in termcap.c and after returning from ! or ^Z
  */
-gettty()
+void gettty()
 {
 	if (GTTY(&inittyb) == -1) 
 		perror("gettty");
@@ -88,7 +88,7 @@ gettty()
 }
 
 /* reset terminal to original state */
-settty()
+void settty()
 {
 	if (STTY(&inittyb) == -1)
 		perror("settty");
@@ -98,7 +98,7 @@ settty()
 	curttyb.inputflags |= STRIPHI;
 }
 
-setuptty()
+void setuptty()
 {
 	curttyb.echoflgs &= ~ECHOMASK;
 #ifdef TERMIO
@@ -118,7 +118,7 @@ setuptty()
  *
  *	like: system("stty cbreak -echo")
  */
-scbr ()
+void scbr ()
 {
 	curttyb.cbrkflgs &= ~ECHOMASK;
 #ifdef TERMIO
@@ -133,7 +133,7 @@ scbr ()
  *	sncbr()		Function to set -cbreak echo for the terminal
  *
  */
-sncbr ()
+void sncbr ()
 {
 	curttyb.cbrkflgs |= ECHOMASK;
 #ifdef TERMIO
@@ -149,9 +149,9 @@ sncbr ()
  *		Subroutine to set up terminal in correct mode for game
  *	Attributes off, clear screen, set scrolling region, set tty mode 
  */
-setupvt100 ()
+void setupvt100 ()
 {
-	clear();  
+	larnclear();  
 	setscroll();  
 	gettty();
 }
@@ -161,7 +161,7 @@ setupvt100 ()
  *		Subroutine to clean up terminal when the game is over
  *	Attributes off, clear screen, unset scrolling region, restore tty mode 
  */
-clearvt100 ()
+void clearvt100 ()
 {
 	resetscroll();  
 	settty();

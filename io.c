@@ -36,7 +36,7 @@
  *  cl_line(x,y)         	Clear line at [1,y] and leave cursor at [x,y]
  *  cl_up(x,y)    		Clear screen from [x,1] to current line.
  *  cl_dn(x,y) 			Clear screen from [1,y] to end of display.
- *  standout(str)	 	Print the string in standout mode.
+ *  larnstandout(str)	 	Print the string in standout mode.
  *  set_score_output() 		Called when output should be literally printed.
  ** putcharacter(ch)		Print one character in decoded output buffer.
  ** flush_buf()			Flush buffer with decoded output.
@@ -60,7 +60,7 @@ static char lgetwbuf[LINBUFSIZE];	/* get line (word) buffer*/
 /*
  *	getcharacter() 	Routine to read in one character from the terminal
  */
-getcharacter ()
+int getcharacter ()
 {
 	char byt;
 
@@ -74,7 +74,7 @@ getcharacter ()
  *	newgame() 
  *		Subroutine to save the initial time and seed rnd()
  */
-newgame ()
+void newgame ()
 {
 	long *p,*pe;
 
@@ -228,7 +228,7 @@ void lprintf(const char * fmt, ...)
  *	No checking for output buffer overflow is done, but flushes if needed!
  *	Returns nothing of value.
  */
-lprint (x)
+void lprint (x)
 long x;
 {
 	if (lpnt >= lpend)
@@ -249,7 +249,7 @@ long x;
  *	Enter with the address and number of bytes to write out
  *	Returns nothing of value
  */
-lwrite (buf, len)
+void lwrite (buf, len)
 char *buf;
 int len;
 {
@@ -337,7 +337,7 @@ long larnrint()
  *	Reads "number" bytes into the buffer pointed to by "address".
  *	Returns nothing of value
  */
-lrfill (adr, num)
+void lrfill (adr, num)
 char *adr;
 int num;
 {
@@ -435,7 +435,7 @@ char *lgetl()
  *	lcreat((char*)0); means to the terminal
  *	Returns -1 if error, otherwise the file descriptor opened.
  */
-lcreat(str)
+int lcreat(str)
 char *str;
 {
 	lpnt = lpbuf;
@@ -459,7 +459,7 @@ char *str;
  *	lopen(0) means from the terminal
  *	Returns -1 if error, otherwise the file descriptor opened.
  */
-lopen (str)
+int lopen (str)
 char *str;
 {
 	ipoint = iepoint = BUFSIZ;
@@ -482,7 +482,7 @@ char *str;
  *	lappend(0) means to the terminal
  *	Returns -1 if error, otherwise the file descriptor opened.
  */
-lappend (str)
+int lappend (str)
 char *str;
 {
 	lpnt = lpbuf;
@@ -505,7 +505,7 @@ char *str;
  *
  *	Returns nothing of value.
  */
-lrclose()
+void lrclose()
 {
 	if (fd > 0)
 		close(fd);
@@ -516,7 +516,7 @@ lrclose()
  *
  *	Returns nothing of value.
  */
-lwclose ()
+void lwclose ()
 {
 	lflush();
 	if (lfd > 2)
@@ -527,7 +527,7 @@ lwclose ()
  *	lprcat(string)			append a string to the output buffer
  *					avoids calls to lprintf (time consuming)
  */
-lprcat (str)
+void lprcat (str)
 char *str;
 {
 	char *str2;
@@ -556,7 +556,7 @@ extern char *PC;
 /*
  * init_term()		Terminal initialization -- setup termcap info
  */
-init_term ()
+void init_term ()
 {
 	char termbuf[1024];
 	char *pc, *capptr = cap+10;
@@ -630,7 +630,7 @@ init_term ()
 /*
  * cl_up(x,y) Clear screen from [x,1] to current position. Leave cursor at [x,y]
  */
-cl_up (x,y)
+void cl_up (x,y)
 int x, y;
 {
 	int i;
@@ -646,7 +646,7 @@ int x, y;
 /*
  * cl_dn(x,y) 	Clear screen from [1,y] to end of display. Leave cursor at [x,y]
  */
-cl_dn (x,y)
+void cl_dn (x,y)
 int x, y;
 {
 	int i;
@@ -667,9 +667,9 @@ int x, y;
 }
 
 /*
- * standout(str)  Print the argument string in inverse video (standout mode).
+ * larnstandout(str)  Print the argument string in inverse video (standout mode).
  */
-standout (str)
+void larnstandout (str)
 char *str;
 {
 	if (boldon == 0) {
@@ -685,7 +685,7 @@ char *str;
 /*
  * set_score_output() 	Called when output should be literally printed.
  */
-set_score_output() {
+void set_score_output() {
 	enable_scroll = -1;
 }
 
@@ -698,7 +698,7 @@ set_score_output() {
  */
 static int scrline=18; /* line # for wraparound instead of scrolling if no DL */
 
-lflush ()
+void lflush ()
 {
 	int lpoint;
 	char *str;
@@ -794,7 +794,7 @@ static int ind=0;
 /*
  * putcharacter(c)		Print one character in decoded output buffer.
  */
-putcharacter(c)
+int putcharacter(c)
 int c;
 {
 	outbuf[ind++]=c;
@@ -805,7 +805,7 @@ int c;
 /*
  * flush_buf()			Flush buffer with decoded output.
  */
-flush_buf()
+void flush_buf()
 {
 	if (ind)
 		write(lfd, outbuf, ind);
@@ -823,7 +823,7 @@ flush_buf()
  *
  *
  */
-tmcapcnv(sd,ss)
+void tmcapcnv(sd,ss)
 char *sd, *ss;
 {
 	int tmstate=0;	/* 0=normal, 1=ESC 2=[ 3=# */
@@ -888,8 +888,7 @@ br:
 }
 
 
-char *
-getword(buf)
+char * getword(buf)
 char *buf;
 {
 	char c;

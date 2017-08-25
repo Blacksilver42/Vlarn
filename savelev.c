@@ -34,7 +34,7 @@ static unsigned int FileSum;
 /*
  *	routine to save the present level into storage
  */
-savelevel()
+void savelevel()
 {
 	Saved_Level *storage = saved_levels[level];
 
@@ -50,7 +50,7 @@ savelevel()
 /*
  *	routine to restore a level from storage
  */
-getlevel()
+void getlevel()
 {
 	unsigned int i;
 
@@ -83,7 +83,7 @@ getlevel()
 /*
  *	to save the game in a file
  */
-savegame(fname)
+int savegame(fname)
 char	*fname;
 {
 	int	i;
@@ -193,7 +193,7 @@ char	*fname;
 }
 
 
-restoregame(fname)
+void restoregame(fname)
 char	*fname;
 {
 	int	i;
@@ -356,7 +356,7 @@ char	*fname;
 /*
 	subroutine to not allow greedy cheaters
  */
-greedy()
+void greedy()
 {
 	if (wizard) 
 		return;
@@ -376,7 +376,7 @@ lprcat("In that you are GREEDY as well as a CHEATER, I cannot allow this game\n"
 	subroutine to not allow altered save files and terminate the attempted
 	restart
  */
-fsorry()
+void fsorry()
 {
 	if (cheat) 
 		return;
@@ -391,7 +391,7 @@ fsorry()
 /*
 	subroutine to not allow game if save file can't be deleted
  */
-fcheat()
+void fcheat()
 {
 	if (wizard) 
 		return;
@@ -409,7 +409,7 @@ lprcat("is in.  Since this is unfair to the rest of the Ularn community, I\n");
 }
 
 
-init_cells()
+void init_cells()
 {
 	int	i;
 
@@ -421,7 +421,7 @@ init_cells()
 }
 
 
-bwrite(fd, buf, num)
+void bwrite(fd, buf, num)
 int fd;
 char *buf;
 long num;
@@ -452,7 +452,7 @@ long num;
 	FileSum += sum((unsigned char *)buf, num);
 }
 
-bread(fd, buf, num)
+void bread(fd, buf, num)
 int fd;
 char *buf;
 long num;

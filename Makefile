@@ -3,6 +3,7 @@ LIBDIR	= 	/usr/games/lib/Ularn
 
 #	final location of binary (for 'make install')
 BINDIR = 	/usr/games
+PROGRAM = 	Ularn
 
 #	link flags
 LDFLAGS= -lncurses -ltermcap
@@ -56,7 +57,7 @@ lint:
 	lint $(SRCS1) $(LINTLIBS)
 
 clean:
-	rm -f Ularn $(OBJ) core
+	$(RM) -f $(PROGRAM) $(OBJ) core
 
 tags:	nulldep
 
@@ -115,7 +116,7 @@ fortune.o: header.h config.h extern.h
 player.o: header.h config.h itm.h extern.h
 help.o: header.h config.h 
 io.o: header.h config.h extern.h
-main.o: header.h config.h patchlevel.h
+main.o: header.h extern.h config.h patchlevel.h
 monster.o: header.h config.h itm.h player.h monst.h extern.h
 moreobj.o: header.h config.h player.h itm.h monst.h extern.h
 movem.o: header.h config.h player.h itm.h extern.h

@@ -33,7 +33,7 @@ void copymagics(){
 	subroutine to look for an object and give the player his options
 	if an object was found.
  */
-lookforobject(){
+void lookforobject(){
 	int i,j;
 
 	/* can't find objects is time is stopped*/
@@ -704,7 +704,7 @@ over:
 /*
 	function to say what object we found and ask if player wants to take it
  */
-finditem(itm)
+void finditem(itm)
 int itm;
 {
 	int tmp,i;
@@ -752,7 +752,7 @@ int itm;
 	subroutine to process the stair cases
 	if dir > 0 then up else down
  */
-ostairs(dir)
+void ostairs(dir)
 int dir;
 {
 	int x, y;
@@ -826,7 +826,7 @@ int dir;
 
 	subroutine to handle a teleport trap +/- 1 level maximum
  */
-oteleport(err)
+void oteleport(err)
 int err;
 {
 	int tmp;
@@ -882,7 +882,7 @@ int err;
 	function to process a potion
 */
 
-opotion(int pot){
+void opotion(int pot){
 	lprcat("\nDo you (d) drink it, (t) take it"); 
 	iopts();
 	while (1) switch(getcharacter())
@@ -908,7 +908,7 @@ opotion(int pot){
 /*
 	function to drink a potion
  */
-quaffpotion(pot)
+void quaffpotion(pot)
 int pot;
 {
 	int i,j;
@@ -1090,7 +1090,7 @@ int pot;
 
 	function to process a magic scroll
  */
-oscroll(typ)
+void oscroll(typ)
 int typ;
 {
 	lprcat("\nDo you ");
@@ -1132,18 +1132,18 @@ static char curse[] = {
 	BLINDCOUNT, CONFUSE, AGGRAVATE, HASTEMONST, ITCHING,
 	LAUGHING, DRAINSTRENGTH, CLUMSINESS, INFEEBLEMENT, HALFDAM };
 static char exten[] = { 
-	PROTECTIONTIME, DEXCOUNT, STRCOUNT, CHARMCOUNT,
+	PROTECTIONTIME, DEXCOUNT, LARNSTRCOUNT, CHARMCOUNT,
 	INVISIBILITY, CANCELLATION, HASTESELF, GLOBE, SCAREMONST, HOLDMONST, TIMESTOP };
 char time_change[] = { 
 	HASTESELF,HERO,ALTPRO,PROTECTIONTIME,DEXCOUNT,
-	STRCOUNT,GIANTSTR,CHARMCOUNT,INVISIBILITY,CANCELLATION,
+	LARNSTRCOUNT,GIANTSTR,CHARMCOUNT,INVISIBILITY,CANCELLATION,
 	HASTESELF,AGGRAVATE,SCAREMONST,STEALTH,AWARENESS,HOLDMONST,HASTEMONST,
 	FIRERESISTANCE,GLOBE,SPIRITPRO,UNDEADPRO,HALFDAM,SEEINVISIBLE,
 	ITCHING,CLUMSINESS, WTW };
 /*
  *	function to adjust time when time warping and taking courses in school
  */
-adjusttime(tim)
+void adjusttime(tim)
 long tim;
 {
 	int j;
@@ -1161,7 +1161,7 @@ long tim;
 /*
 	function to read a scroll
  */
-read_scroll(int typ) {
+void read_scroll(int typ) {
 	int i,j;
 	if (typ<0 || typ>=MAXSCROLL) 
 		return;  /* be sure we are within bounds */
@@ -1325,7 +1325,7 @@ read_scroll(int typ) {
 }
 
 
-opit()
+void opit()
 {
 	int i;
 	if (rnd(101)>81)
@@ -1357,7 +1357,7 @@ opit()
 	}
 }
 
-obottomless()
+void obottomless()
 {
 	lprcat("\nYou fell into a pit leading straight to HELL!");  
 	beep(); 
@@ -1366,7 +1366,7 @@ obottomless()
 	died(262);
 }
 
-oelevator(dir)
+void oelevator(dir)
 int dir;
 {
 	if (dir==1) { 
@@ -1398,14 +1398,14 @@ int dir;
 	bot_linex();
 }
 
-ostatue()
+void ostatue()
 { }	/* nothing happens when you move on a statue */
 
 
-omirror()
+void omirror()
 { }	/* nothing happens when you move on a mirror */
 
-obook()
+void obook()
 {
 	lprcat("\nDo you ");
 	if (c[BLINDCOUNT]==0) lprcat("(r) read it, "); 
@@ -1437,7 +1437,7 @@ obook()
 /*
 	function to read a book
  */
-readbook(arg)
+void readbook(arg)
 int arg;
 {
 	int i,tmp;
@@ -1459,7 +1459,7 @@ int arg;
 	}
 }
 
-ocookie()
+void ocookie()
 {
 	char *fortune(), *p;
 
@@ -1490,7 +1490,7 @@ ocookie()
 
 
 /* routine to pick up some gold -- if arg==OMAXGOLD then the pile is worth 100* the argument */
-ogold(arg)
+void ogold(arg)
 int arg;
 {
 	long i;
@@ -1507,7 +1507,7 @@ int arg;
 	item[playerx][playery] = know[playerx][playery] = 0;/*destroy gold*/
 }
 
-ohome()
+void ohome()
 {
 	int i;
 
@@ -1517,7 +1517,7 @@ ohome()
 		if (iven[i]==OPOTION) 
 			if (ivenarg[i]==21) {   
 				iven[i]=0;	
-				clear(); 
+				larnclear(); 
 lprcat("Congratulations.  You found the potion of cure dianthroritis!\n");
 lprcat("\nFrankly, No one thought you could do it.");
 lprcat("  Boy!  Did you surprise them!\n");
@@ -1547,7 +1547,7 @@ lprcat("your daughter will recover in a few days.  Congratulations!");
 			}
 
 	while (1) {
-		clear();
+		larnclear();
 lprintf("Welcome home %s.",logname);
 lprcat("  Latest word from the doctor is not good.\n");
 
@@ -1570,9 +1570,9 @@ lprintf("%s, to find the only hope for your daughter, the very rare\n",logname);
 lprcat("potion of cure dianthroritis.  It is rumored that only deep in the\n");
 		lprcat("depths of the caves can this potion be found.\n\n\n");
 		lprcat("\n     ----- press "); 
-		standout("return");
+		larnstandout("return");
 		lprcat(" to continue, "); 
-		standout("escape");
+		larnstandout("escape");
 		lprcat(" to leave ----- ");
 		i=getcharacter();  
 		while (i!=ESC && i!='\n') 
@@ -1587,16 +1587,16 @@ lprcat("potion of cure dianthroritis.  It is rumored that only deep in the\n");
 }
 
 /*	routine to save program space	*/
-iopts()
+void iopts()
 {	
 	lprcat(", or (i) ignore it? ");	
 }
-ignore()
+void ignore()
 {	
 	lprcat("ignore\n");	
 }
 
-closedoor()
+void closedoor()
 {
 	int i;
 

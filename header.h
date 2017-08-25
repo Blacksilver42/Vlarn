@@ -2,17 +2,11 @@
 #include "config.h"
 
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <sys/stat.h>
 #include <sys/param.h>
 #include <sys/times.h>
 
-#ifdef FTIMER
-#  include <sys/timeb.h>
-#endif /* FTIMER */
-
-#ifdef ITIMER
-#  include SYSTIME
-#endif /* ITIMER */
 
 #ifdef TERMIO
 #  include <termio.h>
@@ -27,8 +21,12 @@
 #include <pwd.h>
 #include <signal.h>
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <time.h>
+#include <curses.h>
+#include <term.h>
 #ifdef USG
 #  include <strings.h>
 #else
@@ -117,7 +115,7 @@
 #define resetbold() {if (boldon) *lpnt++ = ST_END;}
 
 	/* clear the screen and home the cursor */
-#define clear() { *lpnt++ =CLEAR; cbak[SPELLS]= -50; }
+#define larnclear() { *lpnt++ =CLEAR; cbak[SPELLS]= -50; }
 
 	/* clear to end of line */
 #define cltoeoln() *lpnt++ = CL_LINE
