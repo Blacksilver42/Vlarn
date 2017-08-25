@@ -14,7 +14,7 @@
  */
 extern char helpfile[];
 
-help ()
+void help ()
 {
 	int i,j;
 	char tmbuf[128];	
@@ -25,16 +25,16 @@ help ()
 	for (i=0; i<23; i++) 
 		lgetl();	/* skip over intro message */
 	for (;  j>0; j--) {
-		clear();
+		larnclear();
 		for (i=0; i<23; i++) { 
 			tmcapcnv(tmbuf,lgetl());  
 			lprcat(tmbuf); 
 		} /* intercept ESC's */
 		if (j>1) {
 			lprcat("    ---- Press ");  
-			standout("return");
+			larnstandout("return");
 			lprcat(" to exit, ");  
-			standout("space");
+			larnstandout("space");
 			lprcat(" for more help ---- ");
 			i=0; 
 			while ((i!=' ') && (i!='\n') && (i!=ESC)) 
@@ -55,14 +55,14 @@ help ()
 /*
  *	function to display the welcome message and background
  */
-welcome ()
+void welcome ()
 {
 	int i;
 	char tmbuf[128];/* intermediate translation buffer when not a VT100 */
 
 	if (openhelp() < 0)  
 		return;   	/* open the help file */
-	clear();
+	larnclear();
 	for(i=0; i<23; i++) { 
 		tmcapcnv(tmbuf,lgetl());  
 		lprcat(tmbuf); 
@@ -74,11 +74,11 @@ welcome ()
 /*
  *	function to say press return to continue and reset scroll when done
  */
-retcont ()
+void retcont ()
 {
 	cursor(1,24); 
 	lprcat("Press "); 
-	standout("return");
+	larnstandout("return");
 	lprcat(" to continue: ");   
 	while (getcharacter() != '\n')
 		;
@@ -88,7 +88,7 @@ retcont ()
 /*
  *	routine to open the help file and return the first character - '0'
  */
-openhelp ()
+int openhelp ()
 {
 	if (lopen(helpfile)<0) {
 		lprintf("Can't open help file \"%s\" ",helpfile);

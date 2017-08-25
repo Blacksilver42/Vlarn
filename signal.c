@@ -4,7 +4,7 @@
 
 
 
-s2choose()	// text to be displayed if ^C during intro screen
+void s2choose()	// text to be displayed if ^C during intro screen
 {
 	cursor(1,24); 
 	lprcat("Press "); 
@@ -107,7 +107,7 @@ SIGTYPE sigsetup()
 #endif /* SIGTSTP */
 }
 
-sigsave()
+void sigsave()
 {
 	signal(SIGHUP,  SIG_DFL);
 	intsave  = signal(SIGINT,  SIG_DFL); 
@@ -127,7 +127,7 @@ sigsave()
 #endif /* SIGTSTP */
 }
 
-sigreset() 
+void sigreset() 
 {
 	signal(SIGHUP,  sgam);
 	signal(SIGINT,  intsave);

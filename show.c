@@ -9,7 +9,7 @@
 
 	show character's inventory
  */
-showstr()
+void showstr()
 {
 	int i,number;
 
@@ -20,7 +20,7 @@ showstr()
 	t_endup(number);
 }
 
-qshowstr()
+void qshowstr()
 {
 	int k;
 
@@ -44,7 +44,7 @@ qshowstr()
 /*
  *	subroutine to clear screen depending on # lines to display
  */
-t_setup (count)
+void t_setup (count)
 int count;
 {
 	if (count<20)  {
@@ -53,14 +53,14 @@ int count;
 	}
 	else {
 		resetscroll(); 
-		clear();
+		larnclear();
 	}
 }
 
 /*
  *	subroutine to restore normal display screen depending on t_setup()
  */
-t_endup (count)
+void t_endup (count)
 int count;
 {
 	if (count<18)  /* how did we clear the screen? */
@@ -74,7 +74,7 @@ int count;
 /*
 	function to show the things player is wearing only
  */
-showwear()
+void showwear()
 {
 	int count, i,j;	
 
@@ -124,7 +124,7 @@ showwear()
 /*
 	function to show the things player can wield only 
  */
-showwield()
+void showwield()
 {
 	int i,j,count;
 
@@ -182,7 +182,7 @@ showwield()
 /*
  *	function to show the things player can read only
  */
-showread ()
+void showread ()
 {
 	int i,j,count;
 
@@ -213,7 +213,7 @@ showread ()
 /*
  *	function to show the things player can eat only
  */
-showeat ()
+void showeat ()
 {
 	int i,j,count;
 
@@ -242,7 +242,7 @@ showeat ()
 /*
 	function to show the things player can quaff only
  */
-showquaff ()
+void showquaff ()
 {
 	int i,j,count;
 
@@ -268,7 +268,7 @@ showquaff ()
 	t_endup(count);
 }
 
-show1 (idx, str2)
+void show1 (idx, str2)
 int idx;
 char *str2[];
 {
@@ -283,7 +283,7 @@ char *str2[];
 		lprintf(" [ %d ]", ivenarg[idx]);
 }
 
-show3 (index)
+void show3 (index)
 int index;
 {
 	switch(iven[index]) {
@@ -322,6 +322,6 @@ int index;
 	if (++srcount>=22) { 
 		srcount=0; 
 		more(); 
-		clear(); 
+		larnclear(); 
 	}
 }

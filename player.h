@@ -29,7 +29,7 @@
 #define REGENCOUNTER 24
 #define MOREDAM 25
 #define DEXCOUNT 26
-#define STRCOUNT 27
+#define LARNSTRCOUNT 27
 #define BLINDCOUNT 28		/* if blind */
 #define CAVELEVEL 29
 #define CONFUSE 30		/* if confused */

@@ -17,7 +17,7 @@ static char mimicmonst=MIMIC;
 		lprintf(str,c[(idx)]);	\
 	}
 
-bottomdo()
+void bottomdo()
 {
 	if (bot1f) {
 		bot3f=bot1f=bot2f=0;
@@ -35,12 +35,12 @@ bottomdo()
 }
 
 /* update only the gold number on the bottomline, called from ogold() */
-bottomgold() { botsub(GOLD,72,19,"%-8d"); }
+void bottomgold() { botsub(GOLD,72,19,"%-8d"); }
 
 /* update number of spells called from regen() */
-bot_spellx() { botsub(SPELLS,9,18,"%2d"); }
+void bot_spellx() { botsub(SPELLS,9,18,"%2d"); }
 
-bot_linex()
+void bot_linex()
 {
 	int i;
 	char buf[12];
@@ -147,7 +147,7 @@ bot_linex()
 	special routine to update hp and level fields on bottom lines
 	called in monster.c hitplayer() and spattack()
  */
-bot_hpx()
+void bot_hpx()
 {
 	if (c[EXPERIENCE] != cbak[EXPERIENCE]) {
 		recalc();
@@ -173,7 +173,7 @@ static struct bot_side_def {
 	GIANTSTR,	"Giant Str",
 	FIRERESISTANCE,"Fire Resit",
 	DEXCOUNT,	"Dexterity",
-	STRCOUNT,	"Strength",
+	LARNSTRCOUNT,	"Strength",
 	SCAREMONST,	"Scare",
 	HASTESELF,	"Haste Self",
 	CANCELLATION,	"Cancel",
@@ -183,7 +183,7 @@ static struct bot_side_def {
 	WTW,		"Wall-Walk"
 };
 
-botside()
+void botside()
 {
 	int i,idx;
 
@@ -208,7 +208,7 @@ botside()
 	always=0;
 }
 
-bothp()
+void bothp()
 {
 	char buf[12];
 
@@ -230,7 +230,7 @@ int 	d_xmin=0,
 	d_xmax=MAXX,
 	d_ymin=0,
 	d_ymax=MAXY;	/* for limited screen drawing */
-draws(xmin,xmax,ymin,ymax)
+void draws(xmin,xmax,ymin,ymax)
 int xmin,xmax,ymin,ymax;
 {
 	int i,idx;
@@ -272,14 +272,14 @@ short 	screen[MAXX][MAXY],
 **
 **	redraw the whole screen as the player knows it
 */
-drawscreen()
+void drawscreen()
 {
 	int i,j,k;
 	int lastx,lasty;  /* used to optimize the object printing */
 
 	if (d_xmin==0 && d_xmax==MAXX && d_ymin==0 && d_ymax==MAXY) {
 		d_flag=1;
-		clear(); /* clear the screen */
+		larnclear(); /* clear the screen */
 	}
 	else {
 		d_flag=0;
@@ -382,7 +382,7 @@ drawscreen()
 **
 **	subroutine to display a cell location on the screen
 */
-showcell(x,y)
+void showcell(x,y)
 int x,y;
 {
 	int i,j,k,m;
@@ -459,7 +459,7 @@ doswitch2:
 **	these coordinated are not shown
 **	used in godirect() in monster.c for missile weapons display
 */
-show1cell(x,y)
+void show1cell(x,y)
 int x,y;
 {
 	if (c[BLINDCOUNT])
@@ -504,7 +504,7 @@ doswitch:
 **	subroutine to show where the player is on the screen
 **	cursor values start from 1 up
 */
-showplayer()
+void showplayer()
 {
 	cursor(playerx+1,playery+1);
 	oldx=playerx;
@@ -524,7 +524,7 @@ showplayer()
 char diroffx[] = { 0,  0, 1,  0, -1,  1, -1, 1, -1 };
 char diroffy[] = { 0,  1, 0, -1,  0, -1, -1, 1,  1 };
 
-moveplayer(dir)
+int moveplayer(dir)
 int dir;	/*	from = present room #  direction = [1-north]
 				[2-east] [3-south] [4-west] [5-northeast]
 				[6-northwest] [7-southeast] [8-southwest]
@@ -589,7 +589,7 @@ int dir;	/*	from = present room #  direction = [1-north]
  */
 static int lincount,count;
 
-seemagic(arg)
+void seemagic(arg)
 int arg;
 {
 	int i,number;
@@ -620,7 +620,7 @@ int arg;
 	}
 	else {
 		resetscroll();
-		clear();
+		larnclear();
 	}
 
 	lprcat("The magic spells you have discovered thus far:\n\n");
@@ -677,7 +677,7 @@ int arg;
 /*
  *	subroutine to paginate the seemagic function
  */
-seepage()
+void seepage()
 {
 	if (++count==3) {
 		lincount++;
@@ -686,7 +686,7 @@ seepage()
 		if (lincount>17) {
 			lincount=0;
 			more();
-			clear();
+			larnclear();
 		}
 	}
 }

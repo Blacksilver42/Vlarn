@@ -11,11 +11,12 @@
  *	subroutine to create the player and the players attributes
  *	this is called at the beginning of a game and at no other time
  */
-void makeplayer() {
+void makeplayer ()
+{
 	int i;
 
 	scbr();
-	clear();
+	larnclear();
 	c[LEVEL]=1;		/*	player starts at level one	*/
 	c[REGENCOUNTER]=16;
 	c[ECOUNTER]=96;		/*start regeneration correctly*/
@@ -48,7 +49,9 @@ void makeplayer() {
  *	levels will get a few more monsters.
  *	Note that it is here we remove genocided monsters from the present level
  */
-void newcavelevel(int x) {
+void newcavelevel (x)
+int x;
+{
 	int i,j;
 
 	if (beenhere[level])
@@ -84,7 +87,7 @@ void newcavelevel(int x) {
  */
 static int mx,mxl,mxh,my,myl,myh,tmp2;
 
-makemaze (lev)
+void makemaze (lev)
 int lev;
 {
 	int i,j;
@@ -157,7 +160,7 @@ int lev;
 /*
 	function to eat away a filled in maze
  */
-eat (xx,yy)
+void eat (xx,yy)
 int xx, yy;
 {
 	int dir,try;
@@ -222,7 +225,7 @@ int xx, yy;
  *		!	cure dianthroritis	-	random object
  */
 
-cannedlevel (lev)
+int cannedlevel (lev)
 int lev;
 {
 	int i,j;
@@ -304,7 +307,7 @@ int lev;
  *	- level 10's treasure room has the eye in it and demon lords
  *	- level V5 has potion of cure dianthroritis and demon prince
  */
-treasureroom(lv)
+void treasureroom(lv)
 int lv;
 {
 	int tx,ty,xsize,ysize;
@@ -326,7 +329,7 @@ int lv;
  *	room is filled with objects and monsters
  *	the coordinate given is that of the upper left corner of the room
  */
-troom(lv,xsize,ysize,tx,ty,glyph)
+void troom(lv,xsize,ysize,tx,ty,glyph)
 int lv,xsize,ysize,tx,ty,glyph;
 {
 	int i,j;
@@ -385,7 +388,7 @@ int lv,xsize,ysize,tx,ty,glyph;
  *	***********
  *	subroutine to create the objects in the maze for the given level
  */
-makeobject (j)
+void makeobject (j)
 int j;
 {
 	int i;
@@ -609,7 +612,7 @@ zug:
 /*
  *	subroutine to fill in a number of objects of the same kind
  */
-fillmroom(n,what,arg)
+void fillmroom(n,what,arg)
 int n, what, arg;
 {
 	int i;
@@ -618,7 +621,7 @@ int n, what, arg;
 		fillroom(what,arg);
 }
 
-froom(n,itm,arg)
+void froom(n,itm,arg)
 int n, itm, arg;
 {
 	if (rnd(151) < n)
@@ -629,7 +632,7 @@ int n, itm, arg;
  *	subroutine to put an object into an empty room
  *	uses a random walk
  */
-fillroom (what,arg)
+void fillroom (what,arg)
 int what, arg;
 {
 	int x,y;
@@ -656,7 +659,7 @@ int what, arg;
  *	subroutine to put monsters into an empty room without walls or other
  *	monsters
  */
-fillmonst (what)
+int fillmonst (what)
 int what;
 {
 	int x,y,trys;
@@ -681,7 +684,7 @@ int what;
  *	must be done when entering a new level
  *	if sethp(1) then wipe out old monsters else leave them there
  */
-sethp (flg)
+void sethp (flg)
 int flg;
 {
 	int i,j;
@@ -735,7 +738,7 @@ int flg;
 /*
  *	Function to destroy all genocided monsters on the present level
  */
-checkgen ()
+void checkgen ()
 {
 	int x,y;
 

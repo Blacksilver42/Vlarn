@@ -19,7 +19,7 @@
  *	******
  *
  */
-oaltar()
+void oaltar()
 {
 	long k;
 
@@ -129,7 +129,7 @@ lprcat("Cheapskate! The Gods are insulted at such a meager offering!");
 /*
 	function to cast a +3 protection on the player
  */
-ohear()
+void ohear()
 {
 	lprcat("You have been heard!");
 	if (c[ALTPRO]==0) 
@@ -144,7 +144,7 @@ ohear()
  *	*******
  *
  */
-othrone(arg)
+void othrone(arg)
 int arg;
 {
 	int i,k;
@@ -194,7 +194,7 @@ int arg;
 	} /* NOTREACHED */
 }
 
-odeadthrone()
+void odeadthrone()
 {
 	int k;
 
@@ -228,7 +228,7 @@ odeadthrone()
  *	******
  *
  */
-ochest()
+void ochest()
 {
 	int i,k;
 
@@ -294,7 +294,7 @@ ochest()
  *	OFOUNTAIN
  *	*********
  */
-ofountain()
+void ofountain()
 {
 	int x;
 
@@ -371,7 +371,7 @@ lprintf("\nOh no!  The water burns like acid!  You suffer %d hit points!",(long)
 	a subroutine to raise or lower character levels
 	if how > 0 they are raised   if how < 0 they are lowered
  */
-fntchange(how)
+void fntchange(how)
 int how;
 {
 	long j;
@@ -464,7 +464,7 @@ int how;
  *
  *	process an up/down of a character attribute for ofountain
  */
-fch(how,x)
+void fch(how,x)
 int how;
 long *x;
 {

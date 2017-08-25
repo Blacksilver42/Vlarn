@@ -109,7 +109,7 @@ static char	*whydead[] = {
  *
  *	returns -1 if unable to read in the scoreboard, returns 0 if all is OK
  */
-readboard()
+int readboard()
 {
 	FILE *fp;
 
@@ -142,7 +142,7 @@ readboard()
  *
  *	returns -1 if unable to write the scoreboard, returns 0 if all is OK
  */
-writeboard()
+int writeboard()
 {
 	FILE *fp;
 
@@ -175,7 +175,7 @@ writeboard()
  *
  *	returns -1 if unable to write the scoreboard, returns 0 if all is OK
  */
-makeboard()
+int makeboard()
 {
 	int	i;
 
@@ -200,7 +200,7 @@ makeboard()
  *	scoreboard.  This function also sets outstanding_taxes to the value in
  *	the winners scoreboard.
  */
-hashewon()
+int hashewon()
 {
 	int	i;
 
@@ -263,7 +263,7 @@ long	x;
  *
  *	Returns the number of players on scoreboard that were shown 
  */
-winshou()
+int winshou()
 {
 	struct wscofmt *p;
 	int	i, j, count;
@@ -312,7 +312,7 @@ winshou()
  *	Enter with 0 to list the scores, enter with 1 to list inventories too
  *	Returns the number of players on scoreboard that were shown 
  */
-shou(x)
+int shou(x)
 int	x;
 {
 	int	i, j, n;
@@ -385,7 +385,7 @@ int	x;
  */
 static char	esb[] = "The scoreboard is empty.\n";
 
-showscores()
+void showscores()
 {
 	int	i, j;
 
@@ -408,7 +408,7 @@ showscores()
  *
  *	Returns nothing of value
  */
-showallscores()
+void showallscores()
 {
 	int	i, j;
 
@@ -439,7 +439,7 @@ showallscores()
  *
  *	Returns 0 if no sorting done, else returns 1
  */
-sortboard()
+int sortboard()
 {
 	int	i, j, pos;
 	long	jdat;
@@ -480,7 +480,7 @@ sortboard()
  *		died() reason # in whyded, and TRUE/FALSE in winner if a winner
  *	ex.		newscore(1000, "player 1", 32, 0);
  */
-newscore(score, whoo, whyded, winner)
+void newscore(score, whoo, whyded, winner)
 long	score;
 int	winner, whyded;
 char	*whoo;
@@ -544,7 +544,7 @@ char	*whoo;
  *		slot in scoreboard in i, and the tax bill in taxes.
  *	Returns nothing of value
  */
-new1sub(score, i, whoo, taxes)
+void new1sub(score, i, whoo, taxes)
 long	score, taxes;
 int	i;
 char	*whoo;
@@ -576,7 +576,7 @@ char	*whoo;
  *		died() reason # in whyded, and slot in scoreboard in i.
  *	Returns nothing of value
  */
-new2sub(score, i, whoo, whyded)
+void new2sub(score, i, whoo, whyded)
 long	score;
 int	i, whyded;
 char	*whoo;
@@ -649,7 +649,7 @@ char	*whoo;
 
 static int	scorerror;
 
-died(x)
+void died(x)
 int	x;
 {
 	int	f, win;
@@ -710,7 +710,7 @@ invalid:
 	/*	now enter the player at the end of the scoreboard */
 	newscore(c[GOLD] + c[BANKACCOUNT], logname, x, win);
 
-	clear();
+	larnclear();
 	lflush();
 	diedsub(x);	/* print out the score line */
 
@@ -743,7 +743,7 @@ invalid:
  *	diedsub(x) 
  *	int x;
  */
-diedsub(x)
+void diedsub(x)
 int	x;
 {
 	char	ch, *mod, *cls;
@@ -788,7 +788,7 @@ int	x;
 	fflush(stdout);
 }
 
-showscore3(index)
+void showscore3(index)
 int	index;
 {
 	switch (iven[index]) {
@@ -832,7 +832,7 @@ int	index;
 	fflush(stdout);
 }
 
-showscore1(idx, str2)
+void showscore1(idx, str2)
 int	idx;
 char	*str2[];
 {

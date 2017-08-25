@@ -12,19 +12,19 @@ void dropobj(void);
 void readscr(void);
 void eatcookie(void);
 void quaff(void);
-int  qwhatitem(void);
-int  whatitem(char *);
-int  readnum(int);
+int qwhatitem(void);
+int whatitem(char *);
+long readnum(long);
 void do_create(void);
 
 /* module: bill.c */
 
-int  letter1(void);
-int  letter2(void);
-int  letter3(void);
-int  letter4(void);
-int  letter5(void);
-int  letter6(void);
+int letter1(void);
+int letter2(void);
+int letter3(void);
+int letter4(void);
+int letter5(void);
+int letter6(void);
 void mailbill(void);
 
 /* module: config.c */
@@ -34,44 +34,44 @@ void mailbill(void);
 
 void makeplayer(void);
 void newcavelevel(int);
-int makemaze(int);
-int eat(int, int);
+void makemaze(int);
+void eat(int, int);
 int cannedlevel(int);
-int treasureroom(int);
-int troom(int, int, int, int, int, int);
-int makeobject(int);
-int fillmroom(int, int, int);
-int froom(int, int, int);
-int fillroom(int, int);
+void treasureroom(int);
+void troom(int, int, int, int, int, int);
+void makeobject(int);
+void fillmroom(int, int, int);
+void froom(int, int, int);
+void fillroom(int, int);
 int fillmonst(int);
-int sethp(int);
-int checkgen(void);
+void sethp(int);
+void checkgen(void);
 
 /* module: data.c */
 
 
 /* module: diag.c */
 
-int diag(void);
-int diagdrawscreen(void);
+void diag(void);
+void diagdrawscreen(void);
 
 /* module: display.c */
 
-int bottomdo(void);
-int bottomgold(void);
-int bot_spellx(void);
-int bot_linex(void);
-int bot_hpx(void);
-int botside(void);
-int bothp(void);
-int draws(int, int, int, int);
-int drawscreen(void);
-int showcell(int, int);
-int show1cell(int, int);
-int showplayer(void);
+void bottomdo(void);
+void bottomgold(void);
+void bot_spellx(void);
+void bot_linex(void);
+void bot_hpx(void);
+void botside(void);
+void bothp(void);
+void draws(int, int, int, int);
+void drawscreen(void);
+void showcell(int, int);
+void show1cell(int, int);
+void showplayer(void);
 int moveplayer(int);
-int seemagic(int);
-int seepage(void);
+void seemagic(int);
+void seepage(void);
 
 /* module: fortune.c */
 
@@ -79,179 +79,179 @@ char *fortune(char *);
 
 /* module: help.c */
 
-int help(void);
-int welcome(void);
-int retcont(void);
+void help(void);
+void welcome(void);
+void retcont(void);
 int openhelp(void);
 
 /* module: io.c */
 
 int getcharacter(void);
-int newgame(void);
+void newgame(void);
 /*VARARGS*/
 void lprintf(const char * fmt, ...);
-int lprint(long);
-int lwrite(char *, int);
+void lprint(long);
+void lwrite(char *, int);
 long lgetc1(void);
 long larnrint();
-int lrfill(char *, int);
+void lrfill(char *, int);
 char *lgetw(void);
 char *lgetl(void);
 int lcreat(char *);
 int lopen(char *);
 int lappend(char *);
-int lrclose(void);
-int lwclose(void);
-int lprcat(char *);
-int init_term(void);
-int cl_up(int, int);
-int cl_dn(int, int);
-int standout(char *);
-int set_score_output(void);
-int lflush(void);
+void lrclose(void);
+void lwclose(void);
+void lprcat(char *);
+void init_term(void);
+void cl_up(int, int);
+void cl_dn(int, int);
+void larnstandout(char *);
+void set_score_output(void);
+void lflush(void);
 int putcharacter(int);
-int flush_buf(void);
-int tmcapcnv(char *, char *);
+void flush_buf(void);
+void tmcapcnv(char *, char *);
 char *getword(char *);
 
 /* module: main.c */
 
 int main(int, char **);
-int parse(void);
-int parse2(void);
+void parse(void);
+void parse2(void);
 extern char * potionname[];
 extern char * scrollname[];
 /* module: monster.c */
 
-int createmonster(int);
+void createmonster(int);
 int cgood(int, int, int, int);
-int createitem(int, int, int, int);
-int cast(void);
-int speldamage(int);
-int loseint(void);
+void createitem(int, int, int, int);
+void cast(void);
+void speldamage(int);
+void loseint(void);
 int isconfuse(void);
 int nospell(int, int);
 int fullhit(int);
-int direct(int, int, char *, int);
-int godirect(int, int, char *, int, int);
-int ifblind(int, int);
-int tdirect(int);
-int makewall(int);
-int omnidirect(int, int, char *);
+void direct(int, int, char *, int);
+void godirect(int, int, char *, int, int);
+void ifblind(int, int);
+void tdirect(int);
+void makewall(int);
+void omnidirect(int, int, char *);
 int dirsub(int *, int *);
 int verifyxy(int *, int *);
-int dirpoly(int);
-int hitmonster(int, int);
+void dirpoly(int);
+void hitmonster(int, int);
 int hitm(int, int, int);
-int hitplayer(int, int);
-int dropsomething(int, int, int);
-int dropgold(int);
-int something(int, int, int);
+void hitplayer(int, int);
+void dropsomething(int, int, int);
+void dropgold(int);
+void something(int, int, int);
 int newobject(int, int *);
 int spattack(int, int, int);
-int checkloss(int);
-int annihilate(void);
-int genmonst(void);
+void checkloss(int);
+void annihilate(void);
+void genmonst(void);
 int makemonst(int);
-int randmonst(void);
+void randmonst(void);
 
 /* module: moreobj.c */
 
-int oaltar(void);
-int ohear(void);
-int othrone(int);
-int odeadthrone(void);
-int ochest(void);
-int ofountain(void);
-int fntchange(int);
-int fch(int, long *);
+void oaltar(void);
+void ohear(void);
+void othrone(int);
+void odeadthrone(void);
+void ochest(void);
+void ofountain(void);
+void fntchange(int);
+void fch(int, long *);
 
 /* module: movem.c */
 
-int movemonst(void);
-int movemt(int, int);
-int mmove(int, int, int, int);
-int teleportmonst(int, int, int);
+void movemonst(void);
+void movemt(int, int);
+void mmove(int, int, int, int);
+void teleportmonst(int, int, int);
 
 /* module: nap.c */
 
-int nap(int);
-int napms(int);
+void nap(int);
 
 /* module: object.c */
 
-int lookforobject(void);
-int finditem(int);
-int ostairs(int);
-int oteleport(int);
-int opotion(int);
-int quaffpotion(int);
-int oscroll(int);
-int adjusttime(long);
-int read_scroll(int);
-int opit(void);
-int obottomless(void);
-int oelevator(int);
-int ostatue(void);
-int omirror(void);
-int obook(void);
-int readbook(int);
-int ocookie(void);
-int ogold(int);
-int ohome(void);
-int iopts(void);
-int ignore(void);
-int closedoor(void);
+void lookforobject(void);
+void finditem(int);
+void ostairs(int);
+void oteleport(int);
+void opotion(int);
+void quaffpotion(int);
+void oscroll(int);
+void adjusttime(long);
+void read_scroll(int);
+void opit(void);
+void obottomless(void);
+void oelevator(int);
+void ostatue(void);
+void omirror(void);
+void obook(void);
+void readbook(int);
+void ocookie(void);
+void ogold(int);
+void ohome(void);
+void iopts(void);
+void ignore(void);
+void closedoor(void);
+void copymagics(void);
 
 /* module: player.c */
 
-int raiselevel(void);
-int loselevel(void);
-int raiseexperience(long);
-int loseexperience(long);
-int losehp(int);
-int losemhp(int);
-int raisehp(int);
-int raisemhp(int);
-int raisespells(int);
-int raisemspells(int);
-int losespells(int);
-int losemspells(int);
-int positionplayer(void);
-int recalc(void);
-int quit(void);
-int more(void);
+void raiselevel(void);
+void loselevel(void);
+void raiseexperience(long);
+void loseexperience(long);
+void losehp(int);
+void losemhp(int);
+void raisehp(int);
+void raisemhp(int);
+void raisespells(int);
+void raisemspells(int);
+void losespells(int);
+void losemspells(int);
+void positionplayer(void);
+void recalc(void);
+void quit(void);
+void more(void);
 int take(int, int);
 int drop_object(int);
-int enchantarmor(void);
-int enchweapon(void);
+void enchantarmor(void);
+void enchweapon(void);
 int pocketfull(void);
 int nearbymonst(void);
 int stealsomething(int, int);
 int emptyhanded(void);
-int creategem(void);
-int adjustcvalues(int, int);
-int gettokstr(char *);
+void creategem(void);
+void adjustcvalues(int, int);
+char * gettokstr(char *);
 int getpassword(void);
 int getyn(void);
 int packweight(void);
 
 /* module: regen.c */
 
-int regen(void);
+void regen(void);
 
 /* module: savelev.c */
 
-int savelevel(void);
-int getlevel();
+void savelevel(void);
+void getlevel();
 int savegame(char *);
-int restoregame(char *);
-int greedy(void);
-int fsorry(void);
-int fcheat(void);
-int init_cells(void);
-int bwrite(int, char *, long);
-int bread(int, char *, long);
+void restoregame(char *);
+void greedy(void);
+void fsorry(void);
+void fcheat(void);
+void init_cells(void);
+void bwrite(int, char *, long);
+void bread(int, char *, long);
 unsigned int sum(unsigned char *, int);
 
 /* module: scores.c */
@@ -263,94 +263,94 @@ int hashewon(void);
 long paytaxes(long);
 int winshou(void);
 int shou(int);
-int showscores(void);
-int showallscores(void);
+void showscores(void);
+void showallscores(void);
 int sortboard(void);
-int newscore(long, char *, int, int);
-int new1sub(long, int, char *, long);
-int new2sub(long, int, char *, int);
-int died(int);
-int diedsub(int);
-int showscore3(int);
-int showscore1(int, char **);
+void newscore(long, char *, int, int);
+void new1sub(long, int, char *, long);
+void new2sub(long, int, char *, int);
+void died(int);
+void diedsub(int);
+void showscore3(int);
+void showscore1(int, char **);
 
 /* module: show.c */
 
-int showstr(void);
-int qshowstr(void);
-int t_setup(int);
-int t_endup(int);
-int showwear(void);
-int showwield(void);
-int showread(void);
-int showeat(void);
-int showquaff(void);
-int show1(int, char **);
-int show3(int);
+void showstr(void);
+void qshowstr(void);
+void t_setup(int);
+void t_endup(int);
+void showwear(void);
+void showwield(void);
+void showread(void);
+void showeat(void);
+void showquaff(void);
+void show1(int, char **);
+void show3(int);
 
 /* module: signal.c */
 
-int s2choose(void);
+void s2choose(void);
 SIGTYPE cntlc(int);
 SIGTYPE sgam(int);
 SIGTYPE stop(int);
 SIGTYPE sigsetup(void);
-int sigsave(void);
-int sigreset(void);
+void sigsave(void);
+void sigreset(void);
 SIGTYPE sigpanic(int);
 
 /* module: sphere.c */
 
-int newsphere(int, int, int, int);
-int rmsphere(int, int);
-int sphboom(int, int);
-int movsphere(void);
+void newsphere(int, int, int, int);
+void rmsphere(int, int);
+void sphboom(int, int);
+void movsphere(void);
 
 /* module: store.c */
 
-int dnd_2hed(void);
-int dnd_hed(void);
-int dndstore(void);
-int handsfull(void);
-int outofstock(void);
-int nogold(void);
-int dnditem(int);
-int sch_hed(void);
-int oschool(void);
-int obank(void);
-int obank2(void);
-int banktitle(char *);
-int ointerest(void);
-int obanksub(void);
-int appraise(int, int);
-int otradhead(void);
-int otradepost(void);
-int cnsitm(void);
-int olrs(void);
-int nomore(void);
-int nocash(void);
-int pad_hd(void);
-int opad(void);
+void dnd_2hed(void);
+void dnd_hed(void);
+void dndstore(void);
+void handsfull(void);
+void outofstock(void);
+void nogold(void);
+void dnditem(int);
+void sch_hed(void);
+void oschool(void);
+void obank(void);
+void obank2(void);
+void banktitle(char *);
+void ointerest(void);
+void obanksub(void);
+void appraise(int, int);
+void otradhead(void);
+void otradepost(void);
+void cnsitm(void);
+void olrs(void);
+void nomore(void);
+void nocash(void);
+void pad_hd(void);
+void opad(void);
 int snag(int);
-int pick_char(int);
+void pick_char(int);
 
 /* module: tok.c */
 
 int yylex(void);
-int flushall(void);
-int sethard(int);
-int readopts(void);
+void flushall(void);
+void sethard(int);
+void readopts(void);
 
 /* module: tty.c */
 
-int setctty(void);
-int gettty(void);
-int settty(void);
-int setuptty(void);
-int scbr(void);
-int sncbr(void);
-int setupvt100(void);
-int clearvt100(void);
+void setctty(void);
+void gettty(void);
+void settty(void);
+void setuptty(void);
+void scbr(void);
+void sncbr(void);
+void setupvt100(void);
+void clearvt100(void);
 
 
 
@@ -369,8 +369,7 @@ extern char *levelname[],loginname[],logname[],*lpbuf,*lpend;
 /* extern char *lpnt, *password, mitem[MAXX][MAXY], moved[MAXX][MAXY];  */
 extern char *lpnt, *password, moved[MAXX][MAXY]; 
 extern char *objectname[], *spelname[],*spelmes[],char_class[], iven[];
-extern char nosignal, nobeep, oldx, oldy, dropflag;
-extern int playerx, playery;
+extern char nosignal, nobeep,oldx,oldy,playerx,playery, dropflag;
 extern char restorflag,nomove, srcount, char_picked;
 extern char nowelcome, level, cheat, enable_scroll;
 extern char nch[], ndgg[], ckpflag, monstlevel[];

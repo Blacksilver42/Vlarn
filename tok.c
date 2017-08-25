@@ -19,7 +19,7 @@ static char usermpoint=0;			/* the user monster pointer */
 /*
  *	lexical analyzer for Ularn
  */
-yylex ()
+int yylex ()
 {
 	int cc, ic;
 	char *sh, *getenv();
@@ -66,7 +66,7 @@ yylex ()
 			pgrp = getpgrp();
 			
 			resetscroll();
-			clear();
+			larnclear();
 			cl_dn(0,0);
 			lflush();
 			if ((ic=fork())==0) {
@@ -114,7 +114,7 @@ yylex ()
 /*
  *	flushall()	Function to flush all type-ahead in the input buffer
  */
-flushall()
+void flushall()
 {
 #ifdef TCFLSH
         ioctl(0, TCFLSH, 0);		/* standard ioctl to flush buffer */
@@ -141,7 +141,7 @@ flushall()
 	function to set the desired hardness
 	enter with hard= -1 for default hardness, else any desired hardness
 */
-sethard (hard)
+void sethard (hard)
 int hard;
 {
 	int j,k,i;
@@ -173,7 +173,7 @@ int hard;
 /*
  *	function to read and process the larn options file
  */
-readopts ()
+void readopts ()
 {
 	char s1buf[80], *str, s2buf[80];
 	char *getword();

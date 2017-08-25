@@ -67,7 +67,8 @@ void ycwi (char x){
 /*
 	function to wear armor
  */
-void wear () {
+void wear ()
+{
 	int i;
 
 	while (1) {
@@ -189,7 +190,8 @@ void dropobj(){
 /*
  *	readscr()		Subroutine to read a scroll one is carrying
  */
-void readscr () {
+void readscr ()
+{
 	int i;
 
 	while (1) {
@@ -221,41 +223,40 @@ void readscr () {
 /*
  *	subroutine to eat a cookie one is carrying
  */
-void eatcookie() {
+void eatcookie ()
+{
 	int i;
-	char *fortune(), *p;
+	char *p;
 
 	while (1) {
-		if ((i = whatitem("eat"))==ESC)  
-			return;
-		if (i != '.'){
-		    if (i=='*') { 
-				showeat(); 
-		    } else {
-				if (iven[i-'a']==OCOOKIE) {
-			    	lprcat("\nThe cookie was delicious.");
-				    iven[i-'a']=0;
-						if (((p=fortune(fortfile))!=0) && (!c[BLINDCOUNT])) {
-							lprcat("  Inside you find a scrap of paper that says:\n");
-							lprcat(p);
-						}
-				    return;
-				} else {
-					if (iven[i-'a']==0) {
-						ydhi(i);
-					} else {
-						lprcat("\nYou can't eat that!");
-					}
-				}
-	    	}
+	if ((i = whatitem("eat"))==ESC)  
+		return;
+	if (i != '.')
+	    if (i=='*') 
+		showeat(); 
+	    else {
+		if (iven[i-'a']==OCOOKIE) {
+		    lprcat("\nThe cookie was delicious.");
+		    iven[i-'a']=0;
+		    if (!c[BLINDCOUNT]) {
+			if ((p=fortune(fortfile))!=0) {
+		lprcat("  Inside you find a scrap of paper that says:\n");
+				lprcat(p);
+			}
+		    }
+		    return;
 		}
+		if (iven[i-'a']==0) { ydhi(i); return; }
+		lprcat("\nYou can't eat that!");  return;
+	    }
 	}
 }
 
 /*
  *	subroutine to quaff a potion one is carrying
  */
-void quaff() {
+void quaff ()
+{
 	int i;
 
 	while (1) {
@@ -281,9 +282,7 @@ void quaff() {
 	}
 }
 
-int qwhatitem()
-/* "What do you want to quaff?
- */
+int qwhatitem ()
 {
 	int j, i=0;
 	char tmp[IVENSIZE];
@@ -310,11 +309,8 @@ int qwhatitem()
 /*
 	function to ask what player wants to do
  */
-
-int whatitem (char *str)
-/*
- * function to ask what player wants to do
- */
+int whatitem (str)
+char *str;
 {
 	int j=0, flag=0, i=0;
 	int wld=0, q=0, r=0, w=0, e=0, d=0;
@@ -412,9 +408,11 @@ int whatitem (char *str)
  *	subroutine to get a number from the player
  *	and allow * to mean return amt, else return the number entered
  */
-int readnum (int mx) {
+long readnum (mx)
+long mx;
+{
 	int i;
-	int amt=0;
+	long amt=0;
 
 		/* allow him to say * for all gold */
 	if ((i=getcharacter()) == '*')   {
@@ -439,10 +437,9 @@ void do_create()
 {
 	int t, a;
 
-gett: // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-      // -- Blacksilver
+gett:
 	cursors();
-	lprcat("\nType of item (Scroll/Potion/Monster/Other) : ");
+	lprintf("\nType of item (Scroll/Potion/Monster/Other) : ");
 	do {
 		t=getcharacter();
 	} while (isspace(t));

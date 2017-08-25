@@ -2,34 +2,32 @@
 #include "header.h"
 #include "player.h"
 #include "extern.h"
-#include <unistd.h>
-#include <sys/wait.h>
-
 
 static char mail600[32];
 static int pid;
 long Taxes;
 
-int letter1() {
+int letter1()
+{
 	sprintf(mail600, "/tmp/#%dmail600",pid); /* prepare path */
 	if (lcreat(mail600) < 0) { 
 		write(1,"can't write 600 letter\n",23); 
 		return(0);
 	}
 
-	lprcat("From: lrs@ularn.com (Ularn Revenue Service)\n");
-	lprcat("Subject: undeclared income\n");
-	lprcat("\n   We heard you survived the caverns of Ularn.  Let me be the");
-	lprcat("\nfirst to congratulate you on your success.  It is quite a feat.");
-	lprcat("\nIt must also have been very profitable for you.");
-	lprcat("\n\n   The Dungeon Master has informed us that you brought");
-	lprintf("\n%d gold pieces back with you from your journey.  As the",
-		(long)c[GOLD]);
-	lprcat("\ncounty of Ularn is in dire need of funds, we have spared no time");
-	lprintf("\nin preparing your tax bill.  You owe %d gold pieces as", Taxes);
-	lprcat("\nof this notice, and is due within 5 days.  Failure to pay will");
-	lprcat("\nmean penalties.  Once again, congratulations, We look forward");
-	lprcat("\nto your future successful expeditions.\n");
+lprcat("From: lrs@ularn.com (Ularn Revenue Service)\n");
+lprcat("Subject: undeclared income\n");
+lprcat("\n   We heard you survived the caverns of Ularn.  Let me be the");
+lprcat("\nfirst to congratulate you on your success.  It is quite a feat.");
+lprcat("\nIt must also have been very profitable for you.");
+lprcat("\n\n   The Dungeon Master has informed us that you brought");
+lprintf("\n%d gold pieces back with you from your journey.  As the",
+	(long)c[GOLD]);
+lprcat("\ncounty of Ularn is in dire need of funds, we have spared no time");
+lprintf("\nin preparing your tax bill.  You owe %d gold pieces as", Taxes);
+lprcat("\nof this notice, and is due within 5 days.  Failure to pay will");
+lprcat("\nmean penalties.  Once again, congratulations, We look forward");
+lprcat("\nto your future successful expeditions.\n");
 
 	lwclose(); 
 	return(1);
@@ -58,7 +56,8 @@ lprcat("\nMay you live in happiness forevermore . . .\n");
 	return(1);
 }
 
-int letter3() {
+int letter3 ()
+{
 	sprintf(mail600,"/tmp/#%dmail600",pid); /* prepare path */
 	if (lcreat(mail600) < 0) { 
 		write(1,"can't write 602 letter\n",23); 
@@ -83,7 +82,8 @@ lprcat(" onward, bewarned\nupon our meeting you shall pay the price!\n");
 	return(1);
 }
 
-int letter4() {
+int letter4 ()
+{
 	sprintf(mail600,"/tmp/#%dmail600",pid); /* prepare path */
 	if (lcreat(mail600) < 0) { 
 		write(1,"can't write 603 letter\n",23); 
@@ -101,7 +101,8 @@ lprcat("\nunleash some of thy wealth upon those who be unfortunate, I,");
 	return(1);
 }
 
-int letter5() {
+int letter5 ()
+{
 	sprintf(mail600,"/tmp/#%dmail600",pid); /* prepare path */
 	if (lcreat(mail600) < 0) { 
 		write(1,"can't write 604 letter\n",23); 
@@ -125,7 +126,8 @@ lprcat("\ngood food.  Could you possibly find it in your heart to help us");
 	return(1);
 }
 
-int letter6() {
+int letter6 ()
+{
 	sprintf(mail600,"/tmp/#%dmail600",pid); /* prepare path */
 	if (lcreat(mail600) < 0) { 
 		write(1,"can't write 605 letter\n",23); 

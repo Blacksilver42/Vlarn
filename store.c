@@ -136,14 +136,14 @@ struct _itm itm[DNDSIZE] =  {
 /*
 	function for the dnd store
  */
-dnd_2hed()
+void dnd_2hed()
 {
 lprcat("Welcome to the Ularn Thrift Shoppe.  We stock many items explorers find useful\n");
 lprcat("in their adventures.  Feel free to browse to your hearts content.\n");
 lprcat("Also be advised, if you break 'em, you pay for 'em.");
 }
 
-dnd_hed()
+void dnd_hed()
 {
 	int i;
 
@@ -153,13 +153,13 @@ dnd_hed()
 	lprcat("You have ");
 }
 
-dndstore()
+void dndstore()
 {
 	int i;
 
 	dnditm = 0;
 	nosignal = 1; /* disable signals */
-	clear();
+	larnclear();
 	dnd_2hed();
 	if (outstanding_taxes>0) {
 lprcat("\n\nThe Ularn Revenue Service has ordered us to not do business with tax evaders.\n");
@@ -168,7 +168,7 @@ lprintf("They have also told us that you owe %d gp in back taxes, and as we must
 lprcat("comply with the law, we cannot serve you at this time.  Soo Sorry.\n");
 		cursors();
 		lprcat("\nPress ");
-		standout("escape");
+		larnstandout("escape");
 		lprcat(" to leave: ");
 		lflush();
 		i=0;
@@ -184,15 +184,15 @@ lprcat("comply with the law, we cannot serve you at this time.  Soo Sorry.\n");
 		cltoeoln();
 		cl_dn(1,20);	/* erase to eod */
 		lprcat("\nEnter your transaction [");
-		standout("space");
+		larnstandout("space");
 		lprcat(" for more, ");
-		standout("escape");
+		larnstandout("escape");
 		lprcat(" to leave]? ");
 		i=0;
 		while ((i<'a' || i>'z') && (i!=' ') && (i!=ESC) && (i!=12))
 			i=getcharacter();
 		if (i==12) {
-			clear();
+			larnclear();
 			dnd_2hed();
 			dnd_hed();
 		}
@@ -238,19 +238,19 @@ lprcat("comply with the law, we cannot serve you at this time.  Soo Sorry.\n");
 /*
 	function for the players hands are full
  */
-handsfull()
+void handsfull()
 {
 	lprcat("\nYou can't carry anything more!");
 	lflush();
 	nap(2200);
 }
-outofstock()
+void outofstock()
 {
 	lprcat("\nSorry, but we are out of that item.");
 	lflush();
 	nap(2200);
 }
-nogold()
+void nogold()
 {
 	lprcat("\nYou don't have enough gold to pay for that!");
 	lflush();
@@ -263,7 +263,7 @@ nogold()
 	to print the item list;
 	used in dndstore() enter with the index into itm
 */
-dnditem(i)
+void dnditem(i)
 int i;
 {
 	int j,k;
@@ -302,9 +302,9 @@ char coursetime[] = { 10, 15, 10, 20, 10, 10, 10, 5 };
 /*
 	function to display the header info for the school
  */
-sch_hed()
+void sch_hed()
 {
-	clear();
+	larnclear();
 lprcat("The College of Ularn offers the exciting opportunity of higher education to\n");
 lprcat("all inhabitants of the caves.  Here is a list of the class schedule:\n\n\n");
 	lprcat("\t\t    Course Name \t       Time Needed\n\n");
@@ -339,7 +339,7 @@ lprcat("all inhabitants of the caves.  Here is a list of the class schedule:\n\n
 	lprcat("You are presently carrying ");
 }
 
-oschool()
+void oschool()
 {
 	int i;
 
@@ -351,7 +351,7 @@ oschool()
 		lprintf("%d gold pieces.   ",(long)c[GOLD]);
 		cursors();
 		lprcat("\nWhat is your choice [");
-		standout("escape");
+		larnstandout("escape");
 		lprcat(" to leave] ? ");
 		yrepcount=0;
 		i=0;
@@ -470,20 +470,20 @@ oschool()
  *	for the first national bank of Ularn
  */
 long lasttime=0;	/* last time he was in bank */
-obank()
+void obank()
 {
 	banktitle("    Welcome to the First National Bank of Ularn.");
 }
-obank2()
+void obank2()
 {
 banktitle("Welcome to the 8th level branch office of the First National Bank of Ularn.");
 }
 
-banktitle(str)
+void banktitle(str)
 char *str;
 {
 	nosignal = 1; /* disable signals */
-	clear();
+	larnclear();
 	lprcat(str);
 	if (outstanding_taxes>0) {
 		int i;
@@ -494,7 +494,7 @@ lprcat("taxes, and we must comply with them. We cannot serve you at this time.  
 lprcat("We suggest you go to the LRS office and pay your taxes.\n");
 		cursors();
 		lprcat("\nPress ");
-		standout("escape");
+		larnstandout("escape");
 		lprcat(" to leave: ");
 		lflush();
 		i=0;
@@ -517,7 +517,7 @@ lprcat("We suggest you go to the LRS office and pay your taxes.\n");
  *	limit of 1 million gold pieces in bank
  */
 #define BANKLIMIT 1000000
-ointerest()
+void ointerest()
 {
 	int i;
 
@@ -537,7 +537,7 @@ ointerest()
 static  short gemorder[IVENSIZE]={0};	/* the reference to screen location for each */
 static long gemvalue[IVENSIZE]={0};	/* the appraisal of the gems */
 
-obanksub()
+void obanksub()
 {
 	long amt;
 	int i,k, eye=0;
@@ -581,13 +581,13 @@ obanksub()
 	while (1) {
 		cl_dn(1,20);
 		lprcat("\nYour wish? [(");
-		standout("d");
+		larnstandout("d");
 		lprcat(") deposit, (");
-		standout("w");
+		larnstandout("w");
 		lprcat(") withdraw, (");
-		standout("s");
+		larnstandout("s");
 		lprcat(") sell a stone, or ");
-		standout("escape");
+		larnstandout("escape");
 		lprcat("]  ");
 		yrepcount=0;
 		i=0;
@@ -674,7 +674,7 @@ obanksub()
 	}
 }
 
-appraise(eye, order)
+void appraise(eye, order)
 int eye, order;
 {
 	long amt;
@@ -710,9 +710,9 @@ int eye, order;
 /*
 	function for the trading post
  */
-otradhead()
+void otradhead()
 {
-	clear();
+	larnclear();
 lprcat("Welcome to the Ularn Trading Post.  We buy items that explorers no longer find\n");
 lprcat("useful.  Since the condition of the items you bring in is not certain,\n");
 lprcat("and we incur great expense in reconditioning the items, we usually pay\n");
@@ -720,7 +720,7 @@ lprcat("only 20% of their value were they to be new.  If the items are badly\n")
 lprcat("damaged, we will pay only 10% of their new value.\n\n");
 }
 
-otradepost()
+void otradepost()
 {
 	int i,j,isub,izarg;
 	long value;
@@ -731,9 +731,9 @@ otradepost()
 	otradhead();
 	while (1) {
 		lprcat("\nWhat item do you want to sell to us [");
-		standout("*");
+		larnstandout("*");
 		lprcat(" for list, or ");
-		standout("escape");
+		larnstandout("escape");
 		lprcat("] ? ");
 		i=0;
 		while (i>'z' || (i<'a' && i!='*' && i!=ESC && i!='.'))
@@ -763,7 +763,7 @@ otradepost()
 		}
 		if (!j)
 			if (i=='*') {
-				clear();
+				larnclear();
 				qshowstr();
 				otradhead();
 			}
@@ -817,7 +817,7 @@ otradepost()
 	}
 }
 
-cnsitm()
+void cnsitm()
 {
 	lprcat("\nSorry, we can't accept unidentified objects.");
 }
@@ -825,13 +825,13 @@ cnsitm()
 /*
  *	for the Ularn Revenue Service
  */
-olrs()
+void olrs()
 {
 	int i,first;
 	long amt;
 
 	first = nosignal = 1; /* disable signals */
-	clear();
+	larnclear();
 	resetscroll();
 	cursor(1,4);
 	if (outstanding_taxes)
@@ -855,9 +855,9 @@ lprcat("Sorry, but it seems you are trying to pay off your taxes by cheating!");
 		}
 		cursor(1, 20);
 		lprcat("\n\nYour wish? [(");
-		standout("p");
+		larnstandout("p");
 		lprcat(") pay taxes, or ");
-		standout("escape");
+		larnstandout("escape");
 		lprcat("]  ");
 		yrepcount=0;
 		i=0;
@@ -899,13 +899,13 @@ nxt:
 }
 
 
-nomore()
+void nomore()
 {
 	lprcat("\nSorry man, I ain't got no more of that shit.");
 	lflush();
 	nap(2200);
 }
-nocash()
+void nocash()
 {
 	lprcat("\nWhattaya trying to pull on me? You aint got the cash!");
 	lflush();
@@ -919,9 +919,9 @@ nocash()
 	function to display the header info for the pad
  */
 char drug[5]={0};
-pad_hd()
+void pad_hd()
 {
-	clear();
+	larnclear();
 	lprcat("Hey man, welcome to Dealer McDope's Pad!  I gots the some of the finest shit\n");
 	lprcat("you'll find anywhere in Ularn - check it out...\n\n\n");
 	lprcat("\t\t    The Stash\t\t\tThe Cash\n\n");
@@ -942,7 +942,7 @@ pad_hd()
 	lprcat("Looks like you got about ");
 }
 
-opad()
+void opad()
 {
 	int i,flag;
 
@@ -955,7 +955,7 @@ opad()
 		lprintf("%d bucks on you.   ",(long)c[GOLD]);
 		cursors();
 		lprcat("\nSo, whatdya want [");
-		standout("escape");
+		larnstandout("escape");
 		lprcat(" to split] ? ");
 		yrepcount=0;
 
@@ -1061,7 +1061,7 @@ opad()
 	} /*end while(1) */
 } /* end pad() */
 
-snag(itm)
+int snag(itm)
 int itm;
 {
 	int i,limit;
@@ -1082,7 +1082,7 @@ int itm;
 	return(0);
 }
 
-pick_char(foo)
+void pick_char(foo)
 int foo;
 {
 	int i;
@@ -1090,7 +1090,7 @@ int foo;
 	nosignal = 1; /* disable signals */
 
     	if (foo == 0) {
-		clear();
+		larnclear();
 		lprcat("\t\tThe Addiction of Ularn\n\n");
 		lprcat("Pick a character class...\n\n\n");
 		lprcat("\t\t    Character\n\n");

@@ -12,7 +12,7 @@
 
 	subroutine to regenerate player hp and spells
  */
-regen()
+void regen()
 {
 	int i,flag;
 	long *d;
@@ -76,8 +76,8 @@ regen()
 				d[DEXTERITY] = 3;
 			flag=1; 
 		}
-	if (d[STRCOUNT])
-		if (--d[STRCOUNT]<=0)	{ 
+	if (d[LARNSTRCOUNT])
+		if (--d[LARNSTRCOUNT]<=0)	{ 
 			d[STREXTRA]-=3; 
 			flag=1; 
 		}

@@ -42,7 +42,7 @@ static char *optstring = "sicnhro:d:";
 	************
  */
 
-main (int argc, char *argv[]){
+int main (int argc, char *argv[]){
 	int i, hard;
 	char buf[BUFSIZ];
 	char *getenv(), *getlogin(), *ptr=0;
@@ -285,7 +285,7 @@ noone:		    	fprintf(stderr,"Who *are* you?\n");
  *
  *	get and execute a command
  */
-parse ()
+void parse ()
 {
 	int i,j;
 	int k,flag;
@@ -393,7 +393,7 @@ parse ()
 					nomove=1;
 					return;	/*give the help screen*/
 
-			case 'S':	clear();
+			case 'S':	larnclear();
 					lprcat("Saving . . .");
 					lflush();
 					if (savegame(savefilename) == -1 && compress) {
@@ -619,7 +619,7 @@ lprintf( "\nThe Addiction of Ularn - Version 2.%d - Difficulty level %d",
 	}
 }
 
-parse2 ()
+void parse2 ()
 {
 	if (c[HASTEMONST])
 		movemonst();
